@@ -17,17 +17,34 @@ public class Chemotaxis extends PApplet {
  Bacteria bac;//declare bacteria variables here   
  public void setup()   
  {    
- 	size(500,500); 
- 	bac = new Bacteria(250,250,50,50,50);
+ 	size(800,800); 
+ 	for (int i=0; i<500; i+=100){
+		for (int x=0; x<500; x+=70){
+			 bac = new Bacteria(x,i,50,50,50);
+			}
+	}	
+ 	
+ 	//bac = new Bacteria(250,250,50,50,50);
  	/*bac.move();
  	bac.show(); */
  	//initialize bacteria variables here   
  }   
  public void draw()   
  {  
-	
- 	bac.move();
- 	bac.show();  
+	background(224,255,255);
+	bac.show();
+ 	bac.move(); 
+ 	for (int x=0; x<800; x+=70){
+		ellipse(x,770,15,15);
+		ellipse(x,750,15,15);
+		ellipse(x,790,15,15);
+		ellipse(x-15,770,15,15);
+		ellipse(x+15,770,15,15);
+
+	}
+
+		
+ 	
  	//move and show the bacteria   
  }  
  class Bacteria    
@@ -45,14 +62,31 @@ public class Chemotaxis extends PApplet {
 
  	public void move()
  	{
- 		myX= myX + (int)(Math.random()*4)+1;
- 		myX= myY + (int)(Math.random()*4)+1;
+ 		//myX= myX + (int)(Math.random()*4)+8;
+ 		//myX= myY + (int)(Math.random()*4)+8;
+ 		int direction = (int)(Math.random()*4);
+
+	  if(direction == 0)
+	    myX = myX + 10; //right
+
+	  else if(direction == 1)
+	    myX = myX - 10; //left
+
+	  else if(direction == 2)
+	    myY = myY + 10; //down
+	    
+	  else // direction must be 3
+	    myY = myY - 10; //up
+
 
  	}
  	public void show()
  	{
  		fill(r, g, b);
  		ellipse(myX, myY, 20,20);
+ 		ellipse(myX-20, myY, 20,20);
+ 		ellipse(myX, myY-20, 20,20);
+ 		ellipse(myX-20, myY-20, 20,20);
  		
  	}
 
