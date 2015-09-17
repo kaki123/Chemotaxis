@@ -1,12 +1,24 @@
- Bacteria bac;//declare bacteria variables here   
+ //Bacteria bac;//declare bacteria variables here  
+ Bacteria [] bac; 
  void setup()   
  {    
  	size(800,800); 
- 	for (int i=0; i<500; i+=100){
+ 	bac = new Bacteria[50];
+ 	/*for (int i=0; i<500; i+=100){
 		for (int x=0; x<500; x+=70){
 			 bac = new Bacteria(x,i,50,50,50);
 			}
-	}	
+	}	*/
+	for(int i = 0; i < bac.length;i++){
+    	for (int y=0; y<500; y+=100){
+			for (int x=0; x<500; x+=70){
+				
+				bac[i] = new Bacteria(x,y,(int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+				
+			}
+		}
+  	}
+
  	
  	//bac = new Bacteria(250,250,50,50,50);
  	/*bac.move();
@@ -16,8 +28,16 @@
  void draw()   
  {  
 	background(224,255,255);
-	bac.show();
- 	bac.move(); 
+	for(int i = 0; i < bac.length;i++)
+  	{
+
+    bac[i].move() ;
+
+    bac[i].show() ;
+  	}
+
+
+	
  	for (int x=0; x<800; x+=70){
 		ellipse(x,770,15,15);
 		ellipse(x,750,15,15);
@@ -51,16 +71,20 @@
  		int direction = (int)(Math.random()*4);
 
 	  if(direction == 0)
-	    myX = myX + 10; //right
+	    myX = myX + 5; //right
 
 	  else if(direction == 1)
 	    myX = myX - 10; //left
 
 	  else if(direction == 2)
-	    myY = myY + 10; //down
+	    myY = myY + 5; //down
 	    
 	  else // direction must be 3
 	    myY = myY - 10; //up
+	if(myX<0||myX>800||myY<0){
+		myX=550;
+		myY=(int)(Math.random()*500+250);
+	}
 
 
  	}
