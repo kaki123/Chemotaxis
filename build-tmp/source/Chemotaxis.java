@@ -26,13 +26,13 @@ public class Chemotaxis extends PApplet {
 			}
 	}	*/
 	for(int i = 0; i < bac.length;i++){
-    	for (int y=0; y<500; y+=100){
-			for (int x=0; x<500; x+=70){
+    	//for (int y=0; y<500; y+=100){
+		//	for (int x=0; x<500; x+=70){
 				
-				bac[i] = new Bacteria(x,y,(int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+				bac[i] = new Bacteria((int)(Math.random()*800),600,(int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
 				
-			}
-		}
+		//	}
+		//}
   	}
 
  	
@@ -51,17 +51,30 @@ public class Chemotaxis extends PApplet {
 
     bac[i].show() ;
   	}
-
-
 	
- 	for (int x=0; x<800; x+=70){
-		ellipse(x,770,15,15);
-		ellipse(x,750,15,15);
-		ellipse(x,790,15,15);
-		ellipse(x-15,770,15,15);
-		ellipse(x+15,770,15,15);
+		for (int y=700; y<800; y+=70){
 
-	}
+		
+			for (int x=0; x<800; x+=70){
+ 		
+ 		
+			/*ellipse(x,770,15,15);
+			ellipse(x,750,15,15);
+			ellipse(x,790,15,15);
+			ellipse(x-15,770,15,15);
+			ellipse(x+15,770,15,15);*/
+				ellipse(x,y,15,15);
+				ellipse(x,y-20,15,15);
+				ellipse(x,y+20,15,15);
+				ellipse(x-15,y,15,15);
+				ellipse(x+15,y,15,15);
+			}
+		}
+	
+	noStroke();
+	fill(255,150,51);
+	ellipse(50, 60, 100, 100);
+
 
 		
  	
@@ -87,22 +100,36 @@ public class Chemotaxis extends PApplet {
  		int direction = (int)(Math.random()*4);
 
 	  if(direction == 0)
-	    myX = myX + 5; //right
+	    myX = myX + 2; //right
 
 	  else if(direction == 1)
-	    myX = myX - 10; //left
+	    myX = myX - 2; //left
 
 	  else if(direction == 2)
-	    myY = myY + 5; //down
+	    myY = myY + 2; //down
 	    
 	  else // direction must be 3
-	    myY = myY - 10; //up
+	    myY = myY - 2; //up
 	if(myX<0||myX>800||myY<0){
 		myX=550;
 		myY=(int)(Math.random()*500+250);
 	}
-
-
+/*	if(get(myX,myY)==color(0)){
+		myX= myX -30;
+	
+	}
+	else if(get(myX,myY)==color(0)){
+		myX= myX +30;
+		
+	}
+	else if(get(myX,myY)==color(0)){
+		myX= myX -30;
+	
+	}
+	else if(get(myX,myY)==color(0)){
+		myX= myX +30;
+	
+	}*/
  	}
  	public void show()
  	{
