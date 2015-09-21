@@ -43,7 +43,7 @@ public class Chemotaxis extends PApplet {
  }   
  public void draw()   
  {  
-	background(224,255,255);
+	background(51,153,255);
 	for(int i = 0; i < bac.length;i++)
   	{
 
@@ -63,11 +63,15 @@ public class Chemotaxis extends PApplet {
 			ellipse(x,790,15,15);
 			ellipse(x-15,770,15,15);
 			ellipse(x+15,770,15,15);*/
+				fill(15,15,15);
 				ellipse(x,y,15,15);
-				ellipse(x,y-20,15,15);
-				ellipse(x,y+20,15,15);
-				ellipse(x-15,y,15,15);
-				ellipse(x+15,y,15,15);
+				fill(255,255,155);
+				ellipse(x-7,y-20,15,22);
+				ellipse(x+10,y-17,15,22);
+				ellipse(x+4,y+20,15,20);
+				
+				ellipse(x-15,y+5,20,15);
+				ellipse(x+15,y+5,20,15);
 			}
 		}
 	
