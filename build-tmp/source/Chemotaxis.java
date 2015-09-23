@@ -43,15 +43,21 @@ public class Chemotaxis extends PApplet {
  }   
  public void draw()   
  {  
-	background(51,153,255);
-	for(int i = 0; i < bac.length;i++)
-  	{
+	background(204,255,255);
+	 stroke(255,255,255);
+  fill(255,255,255);
+  ellipse(270,70,130,130);
+  ellipse(220,70,90,90);
+  ellipse(330,70,90,90);
+  ellipse(540,70,130,130);
+  ellipse(470,70,90,90);
+  ellipse(590,70,90,90);
 
-    bac[i].move() ;
+	noStroke();
+	fill(255,150,51);
+	ellipse(50, 60, 100, 100);
+	//yelloe flowers
 
-    bac[i].show() ;
-  	}
-	
 		for (int y=700; y<800; y+=70){
 
 		
@@ -63,9 +69,9 @@ public class Chemotaxis extends PApplet {
 			ellipse(x,790,15,15);
 			ellipse(x-15,770,15,15);
 			ellipse(x+15,770,15,15);*/
-				fill(15,15,15);
+				fill(255,255,0);
 				ellipse(x,y,15,15);
-				fill(255,255,155);
+				fill(255,0,0);
 				ellipse(x-7,y-20,15,22);
 				ellipse(x+10,y-17,15,22);
 				ellipse(x+4,y+20,15,20);
@@ -75,11 +81,40 @@ public class Chemotaxis extends PApplet {
 			}
 		}
 	
-	noStroke();
-	fill(255,150,51);
-	ellipse(50, 60, 100, 100);
+
+	if(mousePressed==true){
+		background(0,0,0);
+		fill(155,255,255);
+		ellipse(50, 60, 100, 100);
+		//green flowers
+		for (int y=700; y<800; y+=70){
+
+		
+			for (int x=0; x<800; x+=70){
+ 		
+ 	
+				fill(255,255,255);
+				ellipse(x,y,15,15);
+				fill(102,255,102);
+				ellipse(x-7,y-20,15,22);
+				ellipse(x+10,y-17,15,22);
+				ellipse(x+4,y+20,15,20);
+				
+				ellipse(x-15,y+5,20,15);
+				ellipse(x+15,y+5,20,15);
+			}
+		}
 
 
+	}
+	for(int i = 0; i < bac.length;i++)
+  	{
+
+    bac[i].move() ;
+
+    bac[i].show() ;
+  	}
+	
 		
  	
  	//move and show the bacteria   
@@ -88,6 +123,7 @@ public class Chemotaxis extends PApplet {
  {  
  	int myX, myY, r, g, b;
  	
+ 	
  	Bacteria(int x, int y, int r1, int g1, int b1)
  	{
  		myX=x;
@@ -95,25 +131,32 @@ public class Chemotaxis extends PApplet {
  		r=r1;
  		g=g1;
  		b=b1; 
+ 		
  	}
 
  	public void move()
  	{
  		//myX= myX + (int)(Math.random()*4)+8;
  		//myX= myY + (int)(Math.random()*4)+8;
- 		int direction = (int)(Math.random()*4);
+ 		Boolean alive = true;
 
-	  if(direction == 0)
-	    myX = myX + 2; //right
+ 		if (alive==true){
 
-	  else if(direction == 1)
-	    myX = myX - 2; //left
+		  if(mouseX > myX)
+		    myX = myX + (int)(Math.random()*4)+2;
 
-	  else if(direction == 2)
-	    myY = myY + 2; //down
-	    
-	  else // direction must be 3
-	    myY = myY - 2; //up
+
+		  else if(mouseX < myX)
+		    myX = myX - (int)(Math.random()*4)+2;
+
+		  if(mouseY > myY)
+		    myY = myY + (int)(Math.random()*4)+2;
+
+		    
+		  else // direction must be 3
+		     myY = myY -(int)(Math.random()*4)+2;
+ 			}
+ 		
 	if(myX<0||myX>800||myY<0){
 		myX=550;
 		myY=(int)(Math.random()*500+250);
@@ -137,15 +180,21 @@ public class Chemotaxis extends PApplet {
  	}
  	public void show()
  	{
- 		fill(r, g, b);
+ 		
+ 			
+ 			fill(r, g, b);
+	 		ellipse(myX, myY, 20,20);
+	 		ellipse(myX-20, myY, 20,20);
+	 		ellipse(myX, myY-20, 20,20);
+	 		ellipse(myX-20, myY-20, 20,20);}/*fill(r, g, b);
  		ellipse(myX, myY, 20,20);
  		ellipse(myX-20, myY, 20,20);
  		ellipse(myX, myY-20, 20,20);
- 		ellipse(myX-20, myY-20, 20,20);
+ 		ellipse(myX-20, myY-20, 20,20);*/
  		
  	}
 
- }    
+ 
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Chemotaxis" };
     if (passedArgs != null) {
